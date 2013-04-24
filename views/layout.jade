@@ -1,0 +1,47 @@
+doctype 5
+html
+  head
+    title #{title} - Microblog
+    link(rel='stylesheet', href='/stylesheets/bootstrap.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap-responsive.css')
+    script(src='/javascripts/jquery.js')
+    script(src='/javascripts/bootstrap.js')
+    style
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+  body
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          a.btn.btn-navbar(data-toggle='collapse',data-target='.nav-collapse')
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.brad(href='/')Microblog
+          div.nav-collapse
+            ul.nav
+              li.active
+                a(href='/') 首页
+              -if(!user)
+                li
+                  a(href='/login') 登入
+                li
+                  a(href='/reg') 注册
+              -else
+                li
+                  a(href='/logout') 登出
+    #container.container
+      -if(success)
+        .alert.alert-success
+        #{success}
+      -if(error)
+        .alert.alert-error
+        #{error}
+      block body
+      hr
+      footer
+        p
+          a(href='http://www.byvoid.com',target='_blank') BYVoid
+          2012
